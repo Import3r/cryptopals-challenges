@@ -6,8 +6,15 @@ def hex_to_base64(hex_string):
     return base64_result.decode('utf-8')
 
 
+def fixed_xor(data):
+    key = '686974207468652062756c6c277320657965'
+    xor_result = int(data, 16) ^ int(key, 16)
+    return hex(xor_result)[2:]
+
+
 def main():
-    hex_input = input('hex: ')
-    print('base64: ' + hex_to_base64(hex_input))
+    secret_data = input('enter data: ')
+    print('result in hex: ' + fixed_xor(secret_data))
+
 
 main()
